@@ -1,64 +1,152 @@
-# BI & Analytics Project — Starter
+# Smart Sales Starter Files
 
-A basic, compact, professional repository for Python-based analytics projects.
-This project demonstrates best-practice structure, logging, demo modules, tests, and documentation suited for quick prototyping.
+> Start a processing a BI pipeline by reading raw data into pandas DataFrames (a two dimensional representation much like an Excel sheet).
 
-## Quick links
-- Project configuration: [pyproject.toml](pyproject.toml)
-- Documentation config: [mkdocs.yml](mkdocs.yml) → docs: [docs/index.md](docs/index.md)
-- Notebooks: [notebooks/demo_notebook.ipynb](notebooks/demo_notebook.ipynb)
-- Setup guides: [SET_UP_MACHINE.md](SET_UP_MACHINE.md), [SET_UP_PROJECT.md](SET_UP_PROJECT.md)
-- Project structure overview: [STRUCTURE.md](STRUCTURE.md)
-- License: [LICENSE](LICENSE)
+---
 
-## What’s included
-- Demo modules that show common analytics tasks:
-  - Basics: [`analytics_project.demo_module_basics.demo_basics`](src/analytics_project/demo_module_basics.py) — [src/analytics_project/demo_module_basics.py](src/analytics_project/demo_module_basics.py)
-  - Languages (i18n examples): [`analytics_project.demo_module_languages.demo_greetings`](src/analytics_project/demo_module_languages.py) — [src/analytics_project/demo_module_languages.py](src/analytics_project/demo_module_languages.py)
-  - Stats: [`analytics_project.demo_module_stats.demo_stats`](src/analytics_project/demo_module_stats.py) — [src/analytics_project/demo_module_stats.py](src/analytics_project/demo_module_stats.py)
-  - Visualization: [`analytics_project.demo_module_viz.demo_viz`](src/analytics_project/demo_module_viz.py) — [src/analytics_project/demo_module_viz.py](src/analytics_project/demo_module_viz.py)
-- Centralized logging helper:
-  - [`analytics_project.utils_logger.init_logger`](src/analytics_project/utils_logger.py), [`analytics_project.utils_logger.get_log_file_path`](src/analytics_project/utils_logger.py), [`analytics_project.utils_logger.log_example`](src/analytics_project/utils_logger.py) — [src/analytics_project/utils_logger.py](src/analytics_project/utils_logger.py)
-- Package entrypoint: [`analytics_project.main.main`](src/analytics_project/main.py) — [src/analytics_project/main.py](src/analytics_project/main.py)
-- Tests: [tests/test_smoke.py](tests/test_smoke.py), [tests/test_utils_logger.py](tests/test_utils_logger.py)
+## WORKFLOW 1. Set Up Your Machine (DONE in P1)
 
-## Getting started (local)
-1. Create and activate a virtual environment (project recommends Python 3.12). See [SET_UP_PROJECT.md](SET_UP_PROJECT.md).
-2. Install dependencies (uses uv/uvx in project docs). Or with plain pip:
-   - pip install -r requirements (see [pyproject.toml](pyproject.toml) for declared deps)
-3. Initialize the logger and run demos:
-   - Run modules directly:
-     - uv run python -m analytics_project.demo_module_basics
-     - uv run python -m analytics_project.demo_module_languages
-     - uv run python -m analytics_project.demo_module_stats
-     - uv run python -m analytics_project.demo_module_viz
-   - The shared logger is configured via [`analytics_project.utils_logger.init_logger`](src/analytics_project/utils_logger.py).
+Proper setup is critical. Follow earlier instructions to set up your machine.
 
-## Run tests
-- Run the test suite with pytest:
-  - uv run pytest
-- Tests exercise imports and basic behavior:
-  - [tests/test_smoke.py](tests/test_smoke.py)
-  - [tests/test_utils_logger.py](tests/test_utils_logger.py)
+---
 
-## Logging
-- Centralized logging lives in [src/analytics_project/utils_logger.py](src/analytics_project/utils_logger.py). Use:
-  - [`analytics_project.utils_logger.init_logger`](src/analytics_project/utils_logger.py) to configure logging
-  - [`analytics_project.utils_logger.get_log_file_path`](src/analytics_project/utils_logger.py) to find the log file used by the process
+## WORKFLOW 2. Set Up Your Project (DONE in P1)
 
-## Documentation
-- API docs are auto-generated via MkDocs + mkdocstrings. Configure site in [mkdocs.yml](mkdocs.yml). Source docs live in [docs/index.md](docs/index.md).
+We used these one-time commands when first starting the project.
 
-## Contributing
-- Follow formatting and lint rules in [pyproject.toml](pyproject.toml).
-- Pre-commit hooks are configured in [.pre-commit-config.yaml](.pre-commit-config.yaml).
-- Run ruff/pytest before pushing. CI is defined in [.github/workflows/ci.yml](.github/workflows/ci.yml) and docs deploy in [.github/workflows/deploy-docs.yml](.github/workflows/deploy-docs.yml).
+```shell
+uv python pin 3.12
+uv venv
+uv sync --extra dev --extra docs --upgrade
+uv run pre-commit install
+uv run python --version
 
-## Project layout (high level)
-- src/analytics_project/ — package code (see [src/analytics_project/__init__.py](src/analytics_project/__init__.py))
-- tests/ — pytest-based tests ([tests/test_smoke.py](tests/test_smoke.py), [tests/test_utils_logger.py](tests/test_utils_logger.py))
-- notebooks/ — demonstration notebooks ([notebooks/demo_notebook.ipynb](notebooks/demo_notebook.ipynb))
-- docs/ — site content ([docs/index.md](docs/index.md))
+```
 
+**macOS / Linux / WSL:**
+
+```shell
+source .venv/bin/activate
+```
+
+---
+
+## WORKFLOW 3. Daily Workflow
+
+As we progress, we'll use this daily workflow often.
+
+### 3.1 Git Pull from GitHub
+
+Always start with `git pull` to check for any changes made to the GitHub repo.
+
+```shell
+git pull
+```
+
+### 3.2 Run Checks as You Work
+
+If we need additional packages, we first add them to pyproject.toml.
+Add pre-commit to pyproject.toml if you haven't already.
+
+1. Update dependencies (for security and compatibility).
+2. Clean unused cached packages to free space.
+3. Use `git add .` to stage all changes.
+4. Run ruff and fix minor issues.
+5. Update pre-commit periodically.
+6. Run pre-commit quality checks on all code files (**twice if needed**, the first pass may fix things).
+7. Run tests.
+
+In VS Code, open your repository, then open a terminal (Terminal / New Terminal) and run the following commands one at a time to check the code.
+
+```shell
+uv sync --extra dev --extra docs --upgrade
+uv cache clean
+git add .
+uvx ruff check --fix
+uvx pre-commit autoupdate
+uv run pre-commit run --all-files
+git add .
+uv run pytest
+```
+
+NOTE: The second `git add .` ensures any automatic fixes made by Ruff or pre-commit are included before testing or committing.
+
+### 3.3 Build Project Documentation
+
+Make sure you have current doc dependencies, then build your docs, fix any errors, and serve them locally to test.
+
+```shell
+uv run mkdocs build --strict
+uv run mkdocs serve
+```
+
+- After running the serve command, the local URL of the docs will be provided. To open the site, press **CTRL and click** the provided link (at the same time) to view the documentation. On a Mac, use **CMD and click**.
+- Press **CTRL c** (at the same time) to stop the hosting process.
+
+# P2: BI Python – Reading Raw Data into pandas DataFrames
+
+## Project Overview
+This project demonstrates how to use Python and pandas to load raw CSV data files into DataFrames as part of a business intelligence workflow.
+The goal is to automate data preparation so each CSV file is read, verified, and logged for its shape and structure.
+
+During this module, I created a new source file named `data_prep.py` inside the `src/analytics_project` folder.
+This script reads all CSV files in the `data/raw` directory and creates a pandas DataFrame for each file.
+The results are logged to both the console and a project log file.
+
+---
+
+## Commands and Workflow
+
+> ### Activate the Virtual Environment (macOS)
+> To activate the virtual environment for this project, run:
+>
+> ```bash
+> source .venv/bin/activate
+> ```
+>
+> This ensures that all dependencies are managed locally within the project environment.
+
+---
+
+> ### Run the Data Preparation Module
+> To execute the data preparation module and load the raw CSV files into pandas DataFrames, run:
+>
+> ```bash
+> uv run python -m analytics_project.data_prep
+> ```
+>
+> This command executes the module directly from the project root.
+> It reads each raw CSV file found in `data/raw/`, loads it into a pandas DataFrame, and logs the file name and shape to both the console and the project log file.
+
+---
+
+## Output Verification
+
+After running the command above, the terminal log confirmed that each DataFrame was created successfully:
+
+---
+
+## Results Summary
+
+| File Name            | Rows | Columns |
+|----------------------|------|----------|
+| customers_data.csv   | 201  | 4        |
+| products_data.csv    | 100  | 4        |
+| sales_data.csv       | 2001 | 7        |
+
+One DataFrame was successfully created for each raw data file.
+The module executed with no remaining errors.
+The log file (`project_log`) contains a full record of the run.
+
+---
+
+## Git Commands Used
+
+To add, commit, and push changes to GitHub, use the following commands:
+
+```bash
+git add .
+git commit -m "describe your change in quotes"
+git push -u origin main
 
 

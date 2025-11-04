@@ -149,4 +149,48 @@ git add .
 git commit -m "describe your change in quotes"
 git push -u origin main
 
+<!-- ...existing code... -->
 
+## D3.1 Data Collectiom
+
+Date: 2025-11-03
+
+Summary
+- Added two new customer columns: LastPurchaseDate (YYYY-MM-DD) and EmailOptIn (yes/no).
+- Added a small script to generate deterministic values and update the CSV.
+- Script creates a backup before writing the augmented CSV.
+
+Files added/changed
+- scripts/add_customer_columns.py — script that deterministically generates LastPurchaseDate and EmailOptIn per customer and writes the result.
+- data/raw/customers_data.bak.csv — backup copy created when the script runs (keeps original).
+- data/raw/customers_data.csv — overwritten by the augmented CSV (contains the two new columns).
+
+How the script works (short)
+- Uses CustomerID (or Name if CustomerID missing) to seed a SHA256-based deterministic RNG.
+- Picks LastPurchaseDate between JoinDate (or 2020-01-01 if missing) and a fixed TODAY reference.
+- Sets EmailOptIn to "yes" or "no" deterministically with a probability biased slightly by join year.
+- Makes a backup before overwriting the CSV.
+
+Commands I used (macOS, run in VS Code terminal with .venv activated)
+```bash
+# activate venv (if not active)
+source .venv/bin/activate
+
+# run the augmentation script (creates backup and updates CSV)
+python scripts/add_customer_columns.py
+
+# quick verification (view header + first 5 lines)
+head -n 6 data/raw/customers_data.csv
+```
+
+Notes
+- The script writes a backup at data/raw/customers_data.bak.csv before replacing customers_data.csv.
+- If you want to regenerate different deterministic values, update the script's TODAY constant or change the seed logic.
+- If you prefer to keep the original file and write a new file, the script can be adjusted — tell me and I'll modify it.
+
+Git workflow to record the change
+```bash
+git add scripts/add_customer_columns.py data/raw/customers_data.csv
+git commit -m "Add deterministic augmentation: LastPurchaseDate and EmailOptIn; backup created"
+git push
+```

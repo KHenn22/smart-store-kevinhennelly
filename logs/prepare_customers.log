@@ -1,0 +1,40 @@
+2025-11-04 20:19:37,192 | INFO | Reading raw file: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/raw/customers_data.csv
+2025-11-04 20:19:37,201 | INFO | Raw shape: (201, 6)
+2025-11-04 20:19:37,201 | INFO | Initial columns: ['CustomerID', 'Name', 'Region', 'JoinDate', 'LastPurchaseDate', 'EmailOptIn']
+2025-11-04 20:19:37,211 | INFO | LastPurchaseDate: 5 nulls after parsing (invalid date strings were set to NaT)
+2025-11-04 20:19:37,211 | INFO | Deduplicating by CustomerID (keeping row with latest LastPurchaseDate).
+2025-11-04 20:19:37,219 | INFO | Duplicates removed: 1
+2025-11-04 20:19:37,221 | INFO | Dropped 0 rows with missing CustomerID/Name.
+2025-11-04 20:19:37,222 | INFO | Filling 5 missing LastPurchaseDate with JoinDate.
+2025-11-04 20:19:37,231 | INFO | Cleaned shape: (200, 9)
+2025-11-04 20:19:37,236 | INFO | Saved cleaned data to: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/prepared/customers_prepared.csv
+2025-11-04 20:19:37,236 | INFO | Summary:
+2025-11-04 20:19:37,236 | INFO |   Records (raw)    : 201
+2025-11-04 20:19:37,236 | INFO |   Records (cleaned): 200
+2025-11-04 20:19:37,236 | INFO |   Columns          : ['CustomerID', 'Name', 'Region', 'JoinDate', 'LastPurchaseDate', 'EmailOptIn', 'FirstName', 'LastName', 'TenureDays']
+2025-11-04 20:24:48,896 | INFO | Reading raw file: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/raw/customers_data.csv
+2025-11-04 20:24:48,898 | INFO | Raw shape: (201, 6)
+2025-11-04 20:24:48,902 | INFO | LastPurchaseDate: 5 nulls after parsing (invalid strings set to NaT).
+2025-11-04 20:24:48,902 | INFO | Deduplicating by CustomerID (keeping latest LastPurchaseDate).
+2025-11-04 20:24:48,904 | INFO | Duplicates removed: 1
+2025-11-04 20:24:48,906 | INFO | Dropped 0 rows missing CustomerID/Name/JoinDate.
+2025-11-04 20:24:48,907 | INFO | Filling 5 missing LastPurchaseDate with JoinDate.
+2025-11-04 20:24:48,910 | INFO | Cleaned shape: (200, 6)
+2025-11-04 20:24:48,912 | INFO | Saved cleaned data to: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/prepared/customers_prepared.csv
+2025-11-04 20:24:48,912 | INFO | Summary:
+2025-11-04 20:24:48,912 | INFO |   Records (raw)    : 201
+2025-11-04 20:24:48,912 | INFO |   Records (cleaned): 200
+2025-11-04 20:24:48,912 | INFO |   Columns          : ['CustomerID', 'Name', 'Region', 'JoinDate', 'LastPurchaseDate', 'EmailOptIn']
+2025-11-04 20:50:54,108 | INFO | Reading raw file: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/raw/customers_data.csv
+2025-11-04 20:50:54,110 | INFO | Raw shape: (201, 6)
+2025-11-04 20:50:54,114 | INFO | LastPurchaseDate: 6 nulls after parsing (invalid strings set to NaT).
+2025-11-04 20:50:54,114 | INFO | Deduplicating by CustomerID (keeping latest LastPurchaseDate).
+2025-11-04 20:50:54,117 | INFO | Duplicates removed: 1
+2025-11-04 20:50:54,118 | INFO | Dropped 0 rows missing CustomerID/Name/JoinDate.
+2025-11-04 20:50:54,119 | INFO | Filling 6 missing LastPurchaseDate with JoinDate.
+2025-11-04 20:50:54,121 | INFO | Cleaned shape: (200, 6)
+2025-11-04 20:50:54,123 | INFO | Saved cleaned data to: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/prepared/customers_prepared.csv
+2025-11-04 20:50:54,123 | INFO | Summary:
+2025-11-04 20:50:54,123 | INFO |   Records (raw)    : 201
+2025-11-04 20:50:54,123 | INFO |   Records (cleaned): 200
+2025-11-04 20:50:54,123 | INFO |   Columns          : ['CustomerID', 'Name', 'Region', 'JoinDate', 'LastPurchaseDate', 'EmailOptIn']

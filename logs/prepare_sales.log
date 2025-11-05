@@ -1,0 +1,14 @@
+2025-11-04 20:56:20,317 | INFO | Reading raw file: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/raw/sales_data.csv
+2025-11-04 20:56:20,321 | INFO | Raw shape: (2001, 9)
+2025-11-04 20:56:20,322 | INFO | Duplicates removed: 1
+2025-11-04 20:56:20,337 | INFO | Dropped 0 rows missing TransactionID/CustomerID/ProductID.
+2025-11-04 20:56:20,338 | INFO | Dropped 1 rows with missing/invalid SaleDate.
+2025-11-04 20:56:20,339 | INFO | Filled 1 missing SaleAmount with median 731.26
+2025-11-04 20:56:20,340 | INFO | Filled 24 missing Quantity with 1
+2025-11-04 20:56:20,342 | INFO | Removed 66 outliers in SaleAmount (kept -1642.82–3406.52)
+2025-11-04 20:56:20,345 | INFO | Cleaned shape: (1933, 9)
+2025-11-04 20:56:20,353 | INFO | Saved cleaned data to: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/prepared/sales_prepared.csv
+2025-11-04 20:56:20,353 | INFO | Summary:
+2025-11-04 20:56:20,353 | INFO |   Records (raw)    : 2001
+2025-11-04 20:56:20,353 | INFO |   Records (cleaned): 1933
+2025-11-04 20:56:20,353 | INFO |   Columns          : ['TransactionID', 'SaleDate', 'CustomerID', 'ProductID', 'StoreID', 'CampaignID', 'SaleAmount', 'Quantity', 'PaymentMethod']

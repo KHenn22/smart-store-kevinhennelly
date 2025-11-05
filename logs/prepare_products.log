@@ -1,0 +1,39 @@
+2025-11-04 20:36:46,035 | INFO | Reading raw file: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/raw/products_data.csv
+2025-11-04 20:36:46,037 | INFO | Raw shape: (100, 6)
+2025-11-04 20:36:46,038 | INFO | Duplicates removed: 0
+2025-11-04 20:36:46,041 | INFO | Dropped 0 rows missing ProductID/ProductName.
+2025-11-04 20:36:46,047 | INFO | Outliers removed in UnitPrice: 0 (kept -518.09–1544.90)
+2025-11-04 20:36:46,049 | INFO | Outliers removed in StockLevel: 2 (kept -164.62–364.38)
+2025-11-04 20:36:46,049 | INFO | Cleaned shape: (98, 6)
+2025-11-04 20:36:46,051 | INFO | Saved cleaned data to: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/prepared/products_prepared.csv
+2025-11-04 20:36:46,051 | INFO | Summary:
+2025-11-04 20:36:46,051 | INFO |   Records (raw)    : 100
+2025-11-04 20:36:46,051 | INFO |   Records (cleaned): 98
+2025-11-04 20:36:46,051 | INFO |   Columns          : ['ProductID', 'ProductName', 'Category', 'UnitPrice', 'StockLevel', 'Discontinued']
+2025-11-04 20:45:05,495 | INFO | Reading raw file: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/raw/products_data.csv
+2025-11-04 20:45:05,497 | INFO | Raw shape: (100, 6)
+2025-11-04 20:45:05,498 | INFO | Duplicates removed: 0
+2025-11-04 20:45:05,500 | INFO | Flagged 6 rows: StockLevel_non_numeric
+2025-11-04 20:45:05,506 | INFO | Flagged 9 rows: Discontinued_unknown→no
+2025-11-04 20:45:05,508 | INFO | Flagged 6 rows: StockLevel_missing→0
+2025-11-04 20:45:05,511 | INFO | Outliers removed in UnitPrice: 0 (kept -518.09–1544.90)
+2025-11-04 20:45:05,512 | INFO | Flagged 2 rows: StockLevel_outlier_removed
+2025-11-04 20:45:05,513 | INFO | Outliers removed in StockLevel: 2 (kept -164.62–364.38)
+2025-11-04 20:45:05,513 | INFO | Cleaned shape: (98, 8)
+2025-11-04 20:45:05,515 | INFO | Saved cleaned data to: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/prepared/products_prepared.csv
+2025-11-04 20:45:05,515 | INFO | Summary:
+2025-11-04 20:45:05,515 | INFO |   Records (raw)    : 100
+2025-11-04 20:45:05,515 | INFO |   Records (cleaned): 98
+2025-11-04 20:45:05,516 | INFO |   Columns          : ['ProductID', 'ProductName', 'Category', 'UnitPrice', 'StockLevel', 'Discontinued', 'DataIssues', 'DataIssues']
+2025-11-04 20:49:13,158 | INFO | Reading raw file: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/raw/products_data.csv
+2025-11-04 20:49:13,160 | INFO | Raw shape: (100, 6)
+2025-11-04 20:49:13,161 | INFO | Duplicates removed: 0
+2025-11-04 20:49:13,164 | INFO | Dropped 0 rows missing ProductID/ProductName.
+2025-11-04 20:49:13,168 | INFO | Outliers removed in UnitPrice: 0 (kept -518.09–1544.90)
+2025-11-04 20:49:13,170 | INFO | Outliers removed in StockLevel: 2 (kept -164.62–364.38)
+2025-11-04 20:49:13,171 | INFO | Cleaned shape: (98, 6)
+2025-11-04 20:49:13,172 | INFO | Saved cleaned data to: /Users/kevinhennelly/Repos/smart-store-kevinhennelly/data/prepared/products_prepared.csv
+2025-11-04 20:49:13,172 | INFO | Summary:
+2025-11-04 20:49:13,172 | INFO |   Records (raw)    : 100
+2025-11-04 20:49:13,173 | INFO |   Records (cleaned): 98
+2025-11-04 20:49:13,173 | INFO |   Columns          : ['ProductID', 'ProductName', 'Category', 'UnitPrice', 'StockLevel', 'Discontinued']

@@ -1,5 +1,4 @@
-"""
-prepare_customers_data.py
+"""prepare_customers_data.py
 Reads customers_data.csv from data/raw/, cleans it, and writes customers_prepared.csv to data/prepared/.
 No extra columns (FirstName, LastName, TenureDays) are added.
 """
@@ -8,6 +7,7 @@ from __future__ import annotations
 
 import logging
 from pathlib import Path
+
 import pandas as pd
 
 # ------------------------------------------------------------------------------

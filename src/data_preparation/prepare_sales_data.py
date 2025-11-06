@@ -1,5 +1,4 @@
-"""
-prepare_sales_data.py
+"""prepare_sales_data.py
 Cleans data/raw/sales_data.csv and writes data/prepared/sales_prepared.csv
 
 Expected columns:
@@ -7,8 +6,10 @@ TransactionID, SaleDate, CustomerID, ProductID, StoreID, CampaignID, SaleAmount,
 """
 
 from __future__ import annotations
+
 import logging
 from pathlib import Path
+
 import pandas as pd
 
 # ------------------------- Paths -------------------------

@@ -1,5 +1,4 @@
-"""
-prepare_products_data.py
+"""prepare_products_data.py
 Cleans data/raw/products_data.csv and writes data/prepared/products_prepared.csv
 
 Expected columns:
@@ -7,8 +6,10 @@ Expected columns:
 """
 
 from __future__ import annotations
+
 import logging
 from pathlib import Path
+
 import pandas as pd
 
 # ------------------------- Paths -------------------------

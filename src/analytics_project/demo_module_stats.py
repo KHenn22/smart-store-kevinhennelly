@@ -127,9 +127,9 @@ if __name__ == "__main__":
 #####################################
 
 __all__ = [
-    "calculate_min",
     "calculate_max",
     "calculate_mean",
+    "calculate_min",
     "calculate_standard_deviation",
     "demo_stats",
 ]

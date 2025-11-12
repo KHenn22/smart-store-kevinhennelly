@@ -197,3 +197,122 @@ sales_data_clean.csv
 ---
 
 **Next Step:** The cleaned files in `data/clean/` are now ready to be loaded into your ETL or BI workflow for analysis.
+
+## P4: Create and Populate DW
+
+> Build a SQLite Data Warehouse (DW) using the cleaned datasets, and validate the structure for analytics use.
+
+---
+
+### WORKFLOW 1. Overview
+
+This stage creates a **SQLite Data Warehouse (DW)** using the cleaned CSVs from `data/clean/`.
+The goal is to load, structure, and verify data for use in business intelligence analysis.
+
+---
+
+### WORKFLOW 2. Objective
+
+- Connect to or create a SQLite database file (`smart_sales.dw`)
+- Load all cleaned CSVs from `data/clean/`
+- Create and populate dimension and fact tables
+- Verify table structures and record counts
+
+---
+
+### WORKFLOW 3. Run the ETL Script
+
+Activate the virtual environment and run the ETL script:
+
+    source .venv/bin/activate
+    python src/analytics_project/etl_to_dw.py
+
+This script connects to the data warehouse and performs the following:
+
+1. Loads all cleaned CSVs
+2. Creates seven tables:
+   - `dates`
+   - `customers`
+   - `products`
+   - `stores`
+   - `campaigns`
+   - `payment_methods`
+   - `sales`
+3. Inserts all records and commits to the database
+
+---
+
+### WORKFLOW 4. Example Terminal Output
+
+    Building DW at: data/dw/smart_sales.dw
+    dates             -> 281 rows
+    customers         -> 201 rows
+    products          -> 100 rows
+    stores            -> 4 rows
+    campaigns         -> 4 rows
+    payment_methods   -> 9 rows
+    sales             -> 1999 rows
+    Done.
+
+---
+
+### WORKFLOW 5. Validate the Data Warehouse (Task 3)
+
+Use the **SQLite Viewer** extension in VS Code to confirm successful table creation and data population.
+
+#### Steps
+
+1. Install the **SQLite** extension by *alexcvzz*
+2. Right-click `data/dw/smart_sales.dw` → **Open Database**
+3. Review all tables and confirm record counts
+4. Open each table to verify that data populated correctly
+
+---
+
+### WORKFLOW 6. Results Summary
+
+| Table | Rows | Status |
+|---|---:|:--:|
+| dates | 281 | ✅ |
+| customers | 201 | ✅ |
+| products | 100 | ✅ |
+| stores | 4 | ✅ |
+| campaigns | 4 | ✅ |
+| payment_methods | 9 | ✅ |
+| sales | 1999 | ✅ |
+
+---
+
+### WORKFLOW 7. Notes and Lessons Learned
+
+- Empty quotes (`""`) in some columns (e.g., campaigns) represent null or missing values — this is acceptable.
+- The `.dw` file extension stands for **Data Warehouse** and functions the same as `.db`.
+- The `etl_to_dw.py` script enforces **foreign key integrity** for accurate relational linking.
+- The **SQLite Viewer** extension is a simple, effective tool to verify schema structure and data accuracy.
+
+---
+
+### WORKFLOW 8. Git Commands Used
+
+    git add .
+    git commit -m "Created and populated smart_sales.dw data warehouse with cleaned data"
+    git push
+
+---
+
+### WORKFLOW 9. Final Verification
+
+The Data Warehouse was successfully created and validated.
+All tables were populated correctly, relationships verified, and record counts confirmed.
+
+### WORKFLOW 10. Screenshots
+
+![campaigns](image-1.png)
+![customers](image-2.png)
+![dates](image-3.png)
+![payment method](image-4.png)
+![products](image-5.png)
+![sales](image-6.png)
+![stores](image-7.png)
+
+**Next Step:** Proceed to document final BI analysis and visualization using the populated `smart_sales.dw` database.

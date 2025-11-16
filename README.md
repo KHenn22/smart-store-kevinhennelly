@@ -380,6 +380,33 @@ Example SQL snippets (as used in the notebook)
 3. Drilldown result (sales trend by region)
    ![alt text](image-10.png)
 
+4. Spark SQL Schema
+root
+ |-- sale_id: integer (nullable = true)
+ |-- date: string (nullable = true)
+ |-- customer_id: string (nullable = true)
+ |-- product_id: string (nullable = true)
+ |-- store_id: string (nullable = true)
+ |-- campaign_id: string (nullable = true)
+ |-- payment_method_id: string (nullable = true)
+ |-- quantity: integer (nullable = true)
+ |-- sales_amount: double (nullable = true)
+
+root
+ |-- customer_id: string (nullable = true)
+ |-- name: string (nullable = true)
+ |-- region: string (nullable = true)
+ |-- join_date: string (nullable = true)
+ |-- last_purchase_date: string (nullable = true)
+ |-- email_opt_in: integer (nullable = true)
+
+root
+ |-- product_id: string (nullable = true)
+ |-- product_name: string (nullable = true)
+ |-- category: string (nullable = true)
+ |-- unit_price: double (nullable = true)
+ |-- stock_level: integer (nullable = true)
+ |-- discontinued: integer (nullable = true)
 
 
 

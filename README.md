@@ -316,3 +316,71 @@ All tables were populated correctly, relationships verified, and record counts c
 ![stores](image-7.png)
 
 **Next Step:** Proceed to document final BI analysis and visualization using the populated `smart_sales.dw` database.
+
+<!-- ...existing code... -->
+
+## Platform & tool choices (why these on my machine)
+
+- OS: macOS Seqouia 15.6.1. I use the integrated Terminal and Finder shortcuts below.
+- Editor: Visual Studio Code — lightweight, great notebook support and Python/Spark debugging.
+- Python: 3.12 (managed via project tooling shown in this repo).
+- Spark: pyspark + local SparkSession with SQLite JDBC (sqlite_jdbc-3.51.0.0.jar) — lets me query the DW (smart_sales.dw) using familiar SQL semantics at scale.
+- Data storage: local SQLite DW for easy reproducible demos.
+- Vizuals: Pandas + Seaborn / Matplotlib for quick charts inside notebooks.
+- Optional BI: Power BI Desktop (Windows) or Power BI service — useful for model view and interactive reports; Spark outputs can also be exported for Power BI ingestion.
+
+Quick macOS screenshot tips
+
+## SQL queries & reports (what each cell does)
+
+- Top customers
+  - Query: GROUP BY customer name, SUM(SaleAmount) ORDER BY total DESC.
+  - Purpose: identify high-value customers for targeting / cohort analysis.
+
+- Sales by region
+  - Query: GROUP BY customers.Region, SUM(SaleAmount).
+  - Purpose: geographic performance and where to allocate spend.
+
+- Region × Product Category (dice)
+  - Query: GROUP BY customers.Region, products.Category, SUM(SaleAmount) ORDER BY region, total_sales DESC.
+  - Purpose: two-dimensional view (region vs category) to spot strengths and opportunities.
+
+- Slice operation
+  - Operation: filter the dice result for a single product_category (example: Electronics).
+  - Purpose: a focused regional comparison for that category.
+
+- Drilldown operation
+  - Operation: aggregate at region level and optionally break down by product (or customer) to examine drivers of region totals.
+  - Purpose: move from summary to detail to troubleshoot or explain changes.
+
+Example SQL snippets (as used in the notebook)
+- Top customers:
+  SELECT c.Name AS name, SUM(s.SaleAmount) AS total_spent
+  FROM sales s JOIN customers c
+    ON CAST(s.CustomerID AS STRING) = CAST(c.CustomerID AS STRING)
+  GROUP BY c.Name
+  ORDER BY total_spent DESC;
+
+- Region × Category (dice):
+  SELECT c.Region AS region, p.Category AS product_category, SUM(s.SaleAmount) AS total_sales
+  FROM sales s
+  JOIN customers c ON CAST(s.CustomerID AS STRING) = CAST(c.CustomerID AS STRING)
+  JOIN products p ON s.ProductID = p.ProductID
+  GROUP BY c.Region, p.Category
+  ORDER BY c.Region, total_sales DESC;
+
+## Screenshots
+
+1. Slice result (filtered category)
+   ![alt text](image-8.png)
+
+2. Dice result (region × category)
+   ![alt text](image-9.png)
+
+3. Drilldown result (sales trend by region)
+   ![alt text](image-10.png)
+
+
+
+
+

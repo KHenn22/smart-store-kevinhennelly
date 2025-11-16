@@ -29,6 +29,7 @@ dependencies = [ # fmt: off
   "ipython", # Enhanced Python shell (needed for notebooks)
   "ipykernel", # Jupyter kernel for notebooks
   "pre-commit>=4.3.0",
+  "pyspark>=4.0.1",
 ]  # fmt: on
 
 [project.urls]

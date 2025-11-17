@@ -480,7 +480,7 @@ The OLAP analysis examined customer behavior across email opt-in status, regions
 
 ---
 
-![image.png](attachment:image.png)
+![image.png](image.png)
 
 ## Slice — Total Sales by Email Opt-In Status
 
@@ -488,7 +488,7 @@ Total sales from customers who did not opt in to marketing emails (“No”) wer
 
 ---
 
-![image-2.png](attachment:image-2.png)
+![image-2.png](image-2.png)
 
 ## Dice — Sales by Region and Email Opt-In
 
@@ -496,7 +496,7 @@ Regional splits showed that non-opt-in customers and opt-in customers each had t
 
 ---
 
-![image-3.png](attachment:image-3.png)
+![image-3.png](image-3.png)
 
 ## Dice — Sales by Product Category and Email Opt-In
 
@@ -504,7 +504,7 @@ Across major categories (Clothing, Electronics, Home, Office), non-opt-in custom
 
 ---
 
-![image.png](attachment:image.png)
+![image.png](image.png)
 
 ## Drilldown Level 1 — Category-Level Sales by Email Opt-In
 
@@ -512,7 +512,7 @@ Drilling down into category-level performance confirmed the same pattern: non-op
 
 ---
 
-![image-6.png](attachment:image-6.png)
+![image-6.png](image-6.png)
 
 ## Drilldown Level 2 — Product Category Within Each Opt-In Group
 
@@ -526,8 +526,8 @@ Order value distributions for both groups were similar, with no strong evidence 
 
 ---
 
-![image-4.png](attachment:image-4.png)
-![image-5.png](attachment:image-5.png)
+![image-4.png](image-4.png)
+![image-5.png](image-5.png)
 
 ## Heatmaps — Category × Email Opt-In; Region × Email Opt-In
 
@@ -535,7 +535,7 @@ All heatmaps showed that revenue patterns were driven by a combination of geogra
 
 ---
 
-![image-7.png](attachment:image-7.png)
+![image-7.png](image-7.png)
 
 ## 3-Month Rolling Trend — All Customers
 
@@ -543,7 +543,7 @@ The rolling monthly trend illustrated seasonal behavior with rising activity in 
 
 ---
 
-![image-8.png](attachment:image-8.png)
+![image-8.png](image-8.png)
 
 ## 3-Month Rolling Drilldown — Email Opt-In Over Time
 

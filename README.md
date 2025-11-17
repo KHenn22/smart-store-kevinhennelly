@@ -408,6 +408,177 @@ root
  |-- stock_level: integer (nullable = true)
  |-- discontinued: integer (nullable = true)
 
+# Project 6 – BI Insights and Storytelling
+### Kevin Hennelly
+
+---
+
+## 1. Business Goal
+Analyze how customer email opt-in status affects sales performance and product/category engagement across regions, stores, and order value.
+
+---
+
+## 2. Data Source
+- smart_sales.dw
+- Tables: customers, sales, products, dates, stores, campaigns
+
+---
+
+## 3. Tools
+- PySpark
+- Pandas
+- Seaborn / Matplotlib
+
+---
+
+## 4. Workflow & Logic
+
+This section describes the analytical logic used to answer the business question. The workflow follows standard OLAP operations—slicing, dicing, and drilldown—to explore how customer email opt-in status relates to sales performance across regions, product categories, order values, and time.
+
+### Dimensions Used
+- **Email Opt-In Status** (Yes / No)
+- **Region** (central, east, north, south, southwest, west)
+- **Product Category** (Clothing, Electronics, Home, Office)
+- **Order Value** (SaleAmount from the sales table)
+- **Time** (Last purchase month, including 3-month rolling averages)
+
+### Measures Used
+- **Total Sales** (SUM of SaleAmount)
+- **Customer Count** (COUNT DISTINCT CustomerID)
+- **Order Value Distribution** (boxplot analysis)
+
+### OLAP Operations Performed
+
+#### Slicing
+Single-dimension cuts to establish baseline patterns:
+- Total sales by email opt-in status
+- Distribution of order values by opt-in status
+
+#### Dicing
+Multi-dimensional combinations to uncover deeper structure:
+- Sales by region × email opt-in
+- Sales by product category × email opt-in
+- Sales by region × product category
+- Sales by region × product category × email opt-in (heatmap)
+
+#### Drilldown
+Progressively deeper exploration of segment behavior:
+- **Level 1:** Email opt-in → product category
+- **Level 2:** Product category → category-level sales by opt-in
+- **Time-Based Drilldown:** Last purchase month → 3-month rolling trend → opt-in comparison over time
+
+### Workflow Logic Summary
+1. Began with slicing to compare opt-in vs. non-opt-in behavior.
+2. Expanded into dicing to see how the relationship varies by region and product category.
+3. Drilled deeper into product and time-based behavior to find the source of differences between segments.
+4. Applied smoothing (3-month rolling) to identify stable patterns rather than month-to-month noise.
+5. Use the combined slice → dice → drilldown approach to form a complete view of customer engagement and purchasing patterns.
+
+# 5. Results
+
+The OLAP analysis examined customer behavior across email opt-in status, regions, product categories, order values, and time. Slicing, dicing, and drilldown operations revealed consistent patterns in how different customer groups contribute to sales.  Most interesting is that customers that did not opt-in to email marketing were generally larger drivers of sales and revenue than those who did.  This is counterintuitive to most analysis of customers that opt in for emails. (Note: The data for this was randomly created with customers being assigned yes or no purley at random.  It does make for some interesting findings though)
+
+---
+
+![image.png](attachment:image.png)
+
+## Slice — Total Sales by Email Opt-In Status
+
+Total sales from customers who did not opt in to marketing emails (“No”) were higher than those from email opt-in customers (“Yes”). The non-opt-in group generated more total revenue and constituted the larger share of purchasing activity.
+
+---
+
+![image-2.png](attachment:image-2.png)
+
+## Dice — Sales by Region and Email Opt-In
+
+Regional splits showed that non-opt-in customers and opt-in customers each had three regions they were stronger in. Central, Southwest, and West were stronger for opt-in.  South, North and East were stronger for opt-out.  Of particular note is the South and North were much stronger for opt-out than opt-in.
+
+---
+
+![image-3.png](attachment:image-3.png)
+
+## Dice — Sales by Product Category and Email Opt-In
+
+Across major categories (Clothing, Electronics, Home, Office), non-opt-in customers generated more total sales than opt-in customers in every category. The gap was largest in the Home category, though consistent across all.
+
+---
+
+![image.png](attachment:image.png)
+
+## Drilldown Level 1 — Category-Level Sales by Email Opt-In
+
+Drilling down into category-level performance confirmed the same pattern: non-opt-in customers consistently generated higher sales in each category. Email opt-in customers did not lead in any category.
+
+---
+
+![image-6.png](attachment:image-6.png)
+
+## Drilldown Level 2 — Product Category Within Each Opt-In Group
+
+Examining the category mix within each opt-in group further reinforced this pattern. Non-opt-in customers purchased more in every category relative to opt-in customers.
+
+---
+
+## Distribution — Order Values by Email Opt-In
+
+Order value distributions for both groups were similar, with no strong evidence that opt-in customers spend more per order. Median purchase amounts and ranges were nearly identical.
+
+---
+
+![image-4.png](attachment:image-4.png)
+![image-5.png](attachment:image-5.png)
+
+## Heatmaps — Category × Email Opt-In; Region × Email Opt-In
+
+All heatmaps showed that revenue patterns were driven by a combination of geography and product mix. However, in heatmaps comparing email opt-in status, the non-opt-in group, with a few exceptions, generated the most revenue.
+
+---
+
+![image-7.png](attachment:image-7.png)
+
+## 3-Month Rolling Trend — All Customers
+
+The rolling monthly trend illustrated seasonal behavior with rising activity in the mid-year months and a subsequent decline. Smoothing clarified the timing of peak and low engagement periods.
+
+---
+
+![image-8.png](attachment:image-8.png)
+
+## 3-Month Rolling Drilldown — Email Opt-In Over Time
+
+The rolling drilldown revealed that non-opt-in customers consistently maintained higher activity over time. Even with smoothing, the gap between opt-in and non-opt-in customers remained steady, indicating a persistent behavioral difference rather than random fluctuation.
+
+---
+
+## Overall Finding
+
+Across all slices, dice operations, categories, regions, and time-based analyses, non-opt-in customers were the primary contributors to revenue and activity. Email opt-in status did not correlate with higher engagement, stronger transaction values, or increased purchasing activity.
 
 
+⸻
 
+# 6. Suggested Business Action
+
+Based on the findings, several actions are recommended to improve decision-making and capitalize on observed patterns:
+
+A. The email marketing approach should be reevaluated. Since opt-in customers did not demonstrate higher activity, the current email content, segmentation, send frequency, or list hygiene may not be effective. Small, controlled tests should be used to measure whether adjustments improve engagement.
+
+B. Non–opt-in customers represent the largest source of revenue and should receive more attention. Alternative engagement channels such as SMS, push notifications, loyalty program messaging, or in-app communication may be more appropriate to reach this group.  However, care should be taken as to not be too aggressive as their non-opt-in status for emails may reflect a desire for minimal engagement.  Other forms of engagement should also be opt-in with perhaps encouragement to opt-in (i.e. immediate discount on a purchase).
+
+C. Marketing efforts should prioritize high-performing regions and categories. Regions such as the east and west, along with categories like Electronics and Home, offer opportunities for targeted promotions and inventory optimization. Region-category combinations with strong historical performance should be emphasized.
+
+D. To support ongoing analysis, materialized OLAP aggregates should be created for combinations such as month × email opt-in, region × category, category × opt-in, and rolling-window metrics. This will ensure faster dashboard performance and consistent reporting across teams.
+
+E. Any future email marketing experiments should begin with small, measurable tests to determine whether specific types of messaging or category-focused promotions can increase opt-in engagement. Findings should be validated before scaling up campaign efforts.
+
+
+## 7. Challenges
+
+During the project, several challenges arose that required additional troubleshooting and cleanup before the analysis could move forward. One of the primary issues was data quality. Some fields contained malformed dates, placeholder values such as “?” or empty strings, and customer IDs that did not match any records in the customers table. These issues caused errors during timestamp conversion and produced inaccurate aggregations until they were identified and filtered out.  I've learned I need to get better at the cleaning part.  While I've identified ways to show data is incomplete or missing, it seems to consistently cause issues downstream.  I think with more practice I will get better at properly identifying missing or incomplete errors so it doesn't cause any parsing errors or odd looking charts with "stray" data.
+
+Another challenge involved inconsistent formatting of the email opt-in field. Early in the process, values appeared as 0/1, “Yes”/“No”, and in some cases null. Standardizing these values ensured that slicing, dicing, and drilldown comparisons were accurate and visually consistent across visualizations.  I could've (should've?) fixed this in the cleaning.  Changing 1, 0 to yes, no is easy to do once there instead of each time here.
+
+Time-based charts also presented difficulties due to dense monthly labels and uneven purchase activity. The initial month-by-month trend was cluttered and hard to interpret. Switching to a three-month rolling view improved readability and provided a clearer picture of customer behavior over time.
+
+Finally, some visualizations required adjustment to achieve consistent scaling and layout, especially when placing multiple charts together in the notebook. These refinements ensured that the final presentation was clean, readable, and aligned with the project requirements.

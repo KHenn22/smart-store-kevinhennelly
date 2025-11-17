@@ -480,7 +480,7 @@ The OLAP analysis examined customer behavior across email opt-in status, regions
 
 ---
 
-![image.png](image.png)
+![alt text](image-11.png)
 
 ## Slice — Total Sales by Email Opt-In Status
 
@@ -488,7 +488,7 @@ Total sales from customers who did not opt in to marketing emails (“No”) wer
 
 ---
 
-![image-2.png](image-2.png)
+![alt text](image-12.png)
 
 ## Dice — Sales by Region and Email Opt-In
 
@@ -496,7 +496,7 @@ Regional splits showed that non-opt-in customers and opt-in customers each had t
 
 ---
 
-![image-3.png](image-3.png)
+![alt text](image-13.png)
 
 ## Dice — Sales by Product Category and Email Opt-In
 
@@ -504,7 +504,7 @@ Across major categories (Clothing, Electronics, Home, Office), non-opt-in custom
 
 ---
 
-![image.png](image.png)
+![alt text](image-15.png)
 
 ## Drilldown Level 1 — Category-Level Sales by Email Opt-In
 
@@ -512,7 +512,7 @@ Drilling down into category-level performance confirmed the same pattern: non-op
 
 ---
 
-![image-6.png](image-6.png)
+![alt text](image-16.png)
 
 ## Drilldown Level 2 — Product Category Within Each Opt-In Group
 
@@ -520,14 +520,16 @@ Examining the category mix within each opt-in group further reinforced this patt
 
 ---
 
+![alt text](image-14.png)
+
 ## Distribution — Order Values by Email Opt-In
 
 Order value distributions for both groups were similar, with no strong evidence that opt-in customers spend more per order. Median purchase amounts and ranges were nearly identical.
 
 ---
 
-![image-4.png](image-4.png)
-![image-5.png](image-5.png)
+![alt text](image-17.png)
+![alt text](image-18.png)
 
 ## Heatmaps — Category × Email Opt-In; Region × Email Opt-In
 
@@ -535,7 +537,7 @@ All heatmaps showed that revenue patterns were driven by a combination of geogra
 
 ---
 
-![image-7.png](image-7.png)
+![alt text](image-19.png)
 
 ## 3-Month Rolling Trend — All Customers
 
@@ -543,7 +545,7 @@ The rolling monthly trend illustrated seasonal behavior with rising activity in 
 
 ---
 
-![image-8.png](image-8.png)
+![alt text](image-20.png)
 
 ## 3-Month Rolling Drilldown — Email Opt-In Over Time
 

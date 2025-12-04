@@ -584,3 +584,112 @@ Another challenge involved inconsistent formatting of the email opt-in field. Ea
 Time-based charts also presented difficulties due to dense monthly labels and uneven purchase activity. The initial month-by-month trend was cluttered and hard to interpret. Switching to a three-month rolling view improved readability and provided a clearer picture of customer behavior over time.
 
 Finally, some visualizations required adjustment to achieve consistent scaling and layout, especially when placing multiple charts together in the notebook. These refinements ensured that the final presentation was clean, readable, and aligned with the project requirements.
+
+# P7 Custom BI Project – Payment Method Analysis
+
+## 1. Business Goal
+The goal of this BI project is to understand how customers pay for their purchases and how different payment methods (Visa, Mastercard, ApplePay etc.) influence revenue, customer behavior, and product performance.
+By analyzing payment method metrics—total sales, transaction count, average sale amount, and quantity sold—the business can identify:
+
+- Which payment methods drive the most revenue
+- Which methods attract higher-value customers
+- Opportunities for optimizing operations, checkout flow, and payment partnerships
+
+This project produces actionable insights to help the company improve sales strategy, customer experience, and vendor relationships.
+
+---
+
+## 2. Data Source
+This project uses three prepared CSV datasets:
+
+- `sales_data_prepared.csv`
+- `products_data_prepared.csv`
+- `customers_data_prepared.csv`
+
+These represent a unified retail environment. All datasets were merged into a single BI-ready table inside the notebook.
+
+---
+
+## 3. Tools Used
+- Python 3.12
+- Pandas
+- Matplotlib / Seaborn
+- Jupyter Notebook
+- Git + GitHub
+- VS Code
+
+---
+
+## 4. Workflow & Logic
+1. **Load Data:** Import sales, products, and customers CSVs.
+2. **Create Unified BI Dataset:** Merge on `product_id` and `customer_id`.
+3. **Feature Engineering:**
+   - Derived new metric: **Transaction Count**
+   - Aggregated by **Payment Method**
+   - Calculated total revenue, total quantity, and average sale amount
+4. **BI Operations:**
+   - **Slicing:** Focus on one payment method
+   - **Dicing:** Compare payment methods across product categories
+   - **Drilldowns:** Payment Method → Category → Product
+5. **Visualization:**
+   - Total Sales by Payment Method
+   - Average Sale Amount by Payment Method
+   - Transaction Count heatmap
+   - Quantity Sold by Payment Method
+
+---
+
+## 5. Results (Narrative + Visualizations)
+
+### **1. Visa and Mastercard generated the highest sales volume.**
+They represented the majority of revenue and the most transactions.
+
+### **2. Payment preferences were consistent across product categories.**
+No category skewed toward a specific method, suggesting broad usage patterns.
+
+### **3. Transaction Count (derived metric) revealed clearer differences.**
+Although not in the original dataset, adding this metric improved BI clarity and insights.
+
+### **4. Quantity Sold strongly correlated with transaction count.**
+Payment methods with more customers naturally drove more unit sales.
+
+Charts in the notebook support these findings through bar graphs, comparative visualizations, and drilldowns.
+
+---
+
+## 6. Suggested Business Actions
+
+### **1. Strengthen partnerships with Visa and Mastercard**
+These networks dominate transaction volume.
+Possible actions:
+- Co-branded promotions
+- Negotiating better processing rates
+- Card-linked marketing (“coupon book” programs)
+
+### **2. Optimize checkout flow for preferred payment types**
+Reducing friction increases completed transactions.
+
+### **3. Use incentives to guide customers toward lower-cost networks**
+If certain networks have lower interchange fees, encouraging their use increases profitability.
+
+### **4. Incorporate payment method into customer segmentation**
+Payment behavior can enrich BI models and tailor marketing strategy.
+
+---
+
+## 7. Challenges
+- All dates were identical (5/4/2025), preventing trend or time-series analysis.
+- Transaction Count did not exist in the raw datasets and had to be created.
+- Some categories had low representation, limiting advanced statistical insights.
+- Payment method categories were relatively balanced, limiting extreme outlier analysis.
+
+---
+
+## 8. Ethical Considerations
+- Only aggregated payment data was used—no sensitive PCI financial details.
+- Insights must not be used to discriminate based on customer financial identity.
+- Real-world payment data must follow PCI-DSS standards.
+- Findings should be used to improve experience, not exploit customer behavior.
+
+---
+
